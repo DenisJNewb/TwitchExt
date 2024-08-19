@@ -1,9 +1,11 @@
+const getDate = (): string => new Date().toLocaleTimeString("ru-RU");
+
 export const log = (msg: string): void => {
-  console.log(new Date().toLocaleTimeString(), msg);
+  console.log(getDate(), msg);
 };
 
 export const logError = (error: unknown): void => {
-  console.error(new Date().toLocaleTimeString(), (error as Error).message);
+  console.error(getDate(), (error as Error).message);
 };
 
 export const delayAsync = async (ms: number): Promise<void> => {
