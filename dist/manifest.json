@@ -8,7 +8,7 @@
                 "https://www.twitch.tv/*"
             ],
             "js": [
-                "dist/main.js"
+                "main.js"
             ]
         }
     ]
