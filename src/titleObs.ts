@@ -4,7 +4,7 @@ const pageTitleElement = document.querySelector("title");
 let titleObserver: MutationObserver | null = null;
 let titleChangeTimeout: number | null = null;
 
-export const runTitleObserver = (onTitleChanged: () => void) => {
+export const startTitleObserver = (onTitleChanged: () => void) => {
   if (!pageTitleElement) throw new Error("pageTitleElement is null");
 
   if (titleObserver != null) {

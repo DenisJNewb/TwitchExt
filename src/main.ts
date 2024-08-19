@@ -1,13 +1,13 @@
-import { runTitleObserver } from "./titleObs";
-import { reinitButtonObserverAsync, runButtonObserver } from "./useButton";
+import { logError } from "./common";
+import { startTitleObserver } from "./titleObs";
+import { startButtonObserver } from "./useButton";
 
 setTimeout(async () => {
-  await reinitButtonObserverAsync();
+  try {
+    await startButtonObserver();
+  } catch (error) {
+    logError(error);
+  }
 
-  runTitleObserver(async () => {
-    await reinitButtonObserverAsync();
-    runButtonObserver();
-  });
-
-  runButtonObserver();
+  startTitleObserver(startButtonObserver);
 });
