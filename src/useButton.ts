@@ -21,8 +21,8 @@ const reinitButtonObserverAsync = async (): Promise<void> => {
 const findButton = (): HTMLButtonElement | undefined => {
   const buttons = [...buttonsPanelElement.querySelectorAll("button")];
 
-  const button = buttons.find((b) =>
-    b.className.includes("ScCoreButtonSuccess")
+  const button = buttons.find(
+    (b) => b.ariaLabel && b.ariaLabel.toLocaleLowerCase() == "claim bonus"
   );
 
   return button;
