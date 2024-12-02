@@ -17,7 +17,7 @@ export const startTitleObserver = (onTitleChanged: () => void) => {
     if (titleChangeTimeout) clearTimeout(titleChangeTimeout);
     titleChangeTimeout = setTimeout(() => {
       onTitleChanged();
-    }, 10000);
+    }, 1500);
   });
 
   titleObserver.observe(pageTitleElement, { childList: true });

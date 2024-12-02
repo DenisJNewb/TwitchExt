@@ -1,13 +1,26 @@
 import { logError } from "./common";
+import { removeMainCarouselAsync } from "./main-carousel";
 import { startTitleObserver } from "./titleObs";
-import { startButtonObserver } from "./useButton";
+import { startButtonObserverAsync } from "./useButton";
 
-setTimeout(async () => {
+const resetAsync = async (): Promise<void> => {
+  const startPromise = startButtonObserverAsync();
+  const removePromise = removeMainCarouselAsync();
+
   try {
-    await startButtonObserver();
-  } catch (error) {
-    logError(error);
+    await startPromise;
+  } catch (e) {
+    logError(e);
   }
 
-  startTitleObserver(startButtonObserver);
+  try {
+    await removePromise;
+  } catch (e) {
+    logError(e);
+  }
+};
+
+setTimeout(async () => {
+  await resetAsync();
+  startTitleObserver(resetAsync);
 });

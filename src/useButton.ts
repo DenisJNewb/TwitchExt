@@ -5,7 +5,7 @@ let buttonObserverTimeout: number;
 const min1 = 1000 * 60;
 const min15 = min1 * 15;
 
-export const startButtonObserver = async (): Promise<void> => {
+export const startButtonObserverAsync = async (): Promise<void> => {
   await reinitButtonObserverAsync();
   runButtonObserver();
 };
