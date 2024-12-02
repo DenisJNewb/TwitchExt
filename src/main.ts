@@ -1,20 +1,20 @@
 import { logError } from "./common";
-import { removeMainCarouselAsync } from "./main-carousel";
+import { stopMainPlayerAsync } from "./main-page";
 import { startTitleObserver } from "./titleObs";
 import { startButtonObserverAsync } from "./useButton";
 
 const resetAsync = async (): Promise<void> => {
-  const startPromise = startButtonObserverAsync();
-  const removePromise = removeMainCarouselAsync();
+  const startObsButtonPromise = startButtonObserverAsync();
+  const stopPlayerPromise = stopMainPlayerAsync();
 
   try {
-    await startPromise;
+    await startObsButtonPromise;
   } catch (e) {
     logError(e);
   }
 
   try {
-    await removePromise;
+    await stopPlayerPromise;
   } catch (e) {
     logError(e);
   }

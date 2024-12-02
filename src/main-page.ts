@@ -1,6 +1,6 @@
 import { delayAsync, findElementAsync, log } from "./common";
 
-export const removeMainCarouselAsync = async (): Promise<void> => {
+export const stopMainPlayerAsync = async (): Promise<void> => {
   const carouselDiv = await findElementAsync<HTMLDivElement>(
     "div.front-page-carousel",
     undefined,
@@ -16,6 +16,4 @@ export const removeMainCarouselAsync = async (): Promise<void> => {
   );
 
   titleVideo.onplay = () => titleVideo.pause();
-  const parent = carouselDiv.parentElement;
-  parent?.removeChild(carouselDiv);
 };
