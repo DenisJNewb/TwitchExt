@@ -7,10 +7,14 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'src', 'main.ts'),
+                // second: resolve(__dirname, 'src', 'bonus.ts'),
             },
             output: {
                 dir: resolve(__dirname, 'dist'),
-                entryFileNames: '[name].js'
+                // [name] will be replaced by ts file name
+                entryFileNames: '[name].js',
+                // Optional: ensure shared code doesn't create extra files if not desired
+                manualChunks: undefined,
             }
         },
     },
