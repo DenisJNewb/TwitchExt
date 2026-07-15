@@ -1,9 +1,7 @@
-import { findElementAsync, log } from "./common";
+import { findElementAsync, log, min1, min15 } from "./common";
 
 let buttonsPanelElement: HTMLDivElement;
 let buttonObserverTimeout: number;
-const min1 = 1000 * 60;
-const min15 = min1 * 15;
 
 export const startButtonObserverAsync = async (): Promise<void> => {
   await reinitButtonObserverAsync();
@@ -12,7 +10,7 @@ export const startButtonObserverAsync = async (): Promise<void> => {
 
 const reinitButtonObserverAsync = async (): Promise<void> => {
   buttonsPanelElement = await findElementAsync<HTMLDivElement>(
-    "div.chat-input__buttons-container"
+    "div.chat-input__buttons-container",
   );
 
   log("buttons panel initialized");
@@ -22,7 +20,7 @@ const findButton = (): HTMLButtonElement | undefined => {
   const buttons = [...buttonsPanelElement.querySelectorAll("button")];
 
   const button = buttons.find(
-    (b) => b.ariaLabel && b.ariaLabel.toLocaleLowerCase() == "claim bonus"
+    (b) => b.ariaLabel && b.ariaLabel.toLocaleLowerCase() == "claim bonus",
   );
 
   return button;
