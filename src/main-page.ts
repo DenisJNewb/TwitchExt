@@ -15,10 +15,5 @@ export const stopMainPlayerAsync = async (): Promise<void> => {
     20,
   );
 
-  titleVideo.addEventListener("play", onPlay);
+  titleVideo.onplay = () => titleVideo.pause();
 };
-
-function onPlay(this: HTMLVideoElement) {
-  const p = this;
-  p.play().then(() => p.pause());
-}

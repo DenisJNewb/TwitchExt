@@ -36,8 +36,7 @@ export const reloadVideoAsync = async (): Promise<void> => {
     muted = videoElement.muted;
   }, sec2);
 
-  videoElement.removeEventListener("error", onError);
-  videoElement.addEventListener("error", onError);
+  videoElement.onerror = onError;
   log("video keeper run");
 };
 
